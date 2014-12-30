@@ -1,8 +1,8 @@
 import QtQuick 2.3
-import "../qml/theme"
+import "../theme"
+
 FrontPage {
     id : front_page
-    focus: true
     presenterName : "Bean Yan"
     slideSubject : "CMake, the easy way"
     MouseArea {

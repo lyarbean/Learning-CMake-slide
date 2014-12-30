@@ -1,33 +1,51 @@
 import QtQuick 2.3
 import QtQuick.Controls 1.2
 import "."
-
 ApplicationWindow {
     id: theWindow
-    title: qsTr( "CMake, the easy way")
-    minimumWidth: 960
-    minimumHeight: 540
+    title: qsTr("CMake, the easy way")
+    minimumWidth: 840
+    minimumHeight: 525
     visible: true
-
     Pages {
         id: theModel
     }
 
-    property int currentIndex : 0
-    property int previousIndex : 0
+    property real widthScale: 1.0
+    property real heightScale: 1.0
+    // PointSize
+
+    property real fontScale: 1.0
+    property real tinyFontSize: 14 * fontScale
+    property real smallFontSize: 16 * fontScale
+    property real normalFontSize: 18 * fontScale
+    property real largeFontSize: 24 * fontScale
+    property real hugeFontSize: 32 * fontScale
+    onWidthChanged: {
+        widthScale = width / minimumWidth
+        fontScale = Math.min(widthScale, heightScale)
+    }
+
+    onHeightChanged: {
+        heightScale = height / minimumHeight
+        fontScale = Math.min(widthScale, heightScale)
+    }
+
+    property int currentIndex: 0
+    property int previousIndex: 0
     Component.onCompleted: {
         theView.push(Qt.resolvedUrl(theModel.get(0).ref))
         theView.currentItem.focus = true
     }
     function nextPage() {
-        if (currentIndex < theModel.length - 1) {
+        if (currentIndex < theModel.count - 1) {
             currentIndex++
-            theView.push (Qt.resolvedUrl(theModel.get(currentIndex).ref))
+            theView.push(Qt.resolvedUrl(theModel.get(currentIndex).ref))
             theView.currentItem.focus = true
         }
     }
 
-    function jumpToIndex (idx) {
+    function jumpToIndex(idx) {
         previousIndex = currentIndex
         while (idx < currentIndex) {
             theView.pop()
@@ -36,11 +54,9 @@ ApplicationWindow {
         }
         while (idx > currentIndex) {
             currentIndex++
-            theView.push (Qt.resolvedUrl(theModel.get(currentIndex).ref))
+            theView.push(Qt.resolvedUrl(theModel.get(currentIndex).ref))
             theView.currentItem.focus = true
         }
-        //        console.log(theModel.get(currentIndex).ref)
-        //        console.log("log: ", currentIndex === idx)
     }
 
     StackView {
@@ -48,14 +64,16 @@ ApplicationWindow {
         antialiasing: true
         smooth: true
         Keys.onEscapePressed: {
-            theWindow.close();
+            theWindow.close()
         }
         Keys.onTabPressed: {
-            if (theWindow.visibility !== ApplicationWindow.FullScreen)
-            { theWindow.showFullScreen() }
+            if (theWindow.visibility !== ApplicationWindow.FullScreen) {
+                theWindow.showFullScreen()
+            } else {
+                theWindow.showNormal()
+            }
         }
         Keys.onReleased: {
-            console.log(event.key)
             if (event.key === Qt.Key_Left || event.key === Qt.Key_Backspace) {
                 if (currentIndex > 0) {
                     currentIndex--
@@ -63,10 +81,13 @@ ApplicationWindow {
                     theView.currentItem.focus = true
                     event.accepted = true
                 }
-            } else if (event.key === Qt.Key_Right ||  event.key === Qt.Key_Return) {
+            } else if (event.key === Qt.Key_Right
+                       || event.key === Qt.Key_Return) {
                 if (currentIndex < theModel.count - 1) {
                     currentIndex++
-                    theView.push (Qt.resolvedUrl(theModel.get(currentIndex).ref)).focus = true
+                    theView.push(Qt.resolvedUrl(
+                                     theModel.get(
+                                         currentIndex).ref)).focus = true
                     event.accepted = true
                 }
             } else if (event.key === Qt.Key_Up) {
@@ -80,48 +101,44 @@ ApplicationWindow {
                 event.accepted = true
             }
         }
-        transform: [
-            Scale {
-                id : scale
-                xScale: yScale
-                yScale: Math.min(width/960, height/540)
-            }
-        ]
-
     }
 
     // Navigator with preview support
     Rectangle {
         id: previewBox
-        height: parent.height * 0.35
-        width: parent.width * 0.35
-        y : parent.height * 0.3
-        visible: false
+        height: parent.height * 0.3 + 10
+        width: parent.width * 0.3 + 10
+        y: parent.height * 0.68 - 80
+        x: parent.width * 0.1
+        visible: navigator.visible
         color: "#ffffff"
         border {
-            width: 4
+            width: 3
             color: "steelblue"
         }
-        radius:  4
+        radius: 3
     }
     Loader {
         id: preview
-        parent: previewBox
-        anchors {
-            fill: previewBox
-            leftMargin: parent.height * 0.025
-            topMargin:  parent.height * 0.025
+        x: previewBox.x + 4
+        y: previewBox.y + 4
+        visible: previewBox.visible
+        asynchronous: false
+        onStatusChanged: {
+            if (preview.status ===  Loader.Ready) {
+                item.scale = 0.3
+            }
         }
     }
     Rectangle {
-        z : 999
+        z: 999
         id: navigator
         focus: true
         height: 50
-        width : parent.width
+        width: parent.width * 0.5
         visible: false
         y: parent.height - 75
-        color : "#00ffffff"
+        color: "#00ffffff"
         ListView {
             id: theList
             model: theModel
@@ -138,9 +155,12 @@ ApplicationWindow {
                     height: 50
                     color: "orange"
                 }
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: navigator.visible = false
+                }
             }
-            delegate :
-                Rectangle {
+            delegate: Rectangle {
                 id: box
                 color: "white"
                 width: 50
@@ -156,16 +176,15 @@ ApplicationWindow {
                         margins: 3
                         centerIn: parent
                     }
-                    font.pixelSize: 36
+                    font.pointSize: 24
                     text: index
                     color: "steelblue"
                 }
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        jumpToIndex(index)
                         navigator.visible = false
-                        previewBox.visible = false
+                        jumpToIndex(index)
                     }
                     hoverEnabled: true
                     onHoveredChanged: {
@@ -173,18 +192,10 @@ ApplicationWindow {
                         page.color = containsMouse ? "black" : "steelblue"
                     }
                     onEntered: {
-                        previewBox.visible = true
                         preview.source = ref
-                    }
-                    onExited: {
-                        previewBox.visible = false
                     }
                 }
             }
         }
     }
 }
-
-
-
-

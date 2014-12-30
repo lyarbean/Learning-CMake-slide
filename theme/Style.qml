@@ -13,5 +13,4 @@ QtObject {
     property color aOrange: "#ff7f45"
     property color aYellow: "#fed100"
     property color aMagenta : "#ee008c"
-
 }

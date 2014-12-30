@@ -1,8 +1,8 @@
-import QtQuick 2.2
+import QtQuick 2.0
 
 ListView {
-    property int fontSize: 16
-    property int subFonSize: 14
+    property real fontSize : normalFontSize
+    property real subFonSize: smallFontSize
     property Component  subDelegate: secondDelegate
     property string itemFontFamily : "monospace"
     property string subItemFontFamily : "monospace"

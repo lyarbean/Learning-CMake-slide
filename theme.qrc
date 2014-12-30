@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>theme/BackGround.qml</file>
+        <file>theme/BackPage.qml</file>
+        <file>theme/ContentArea.qml</file>
+        <file>theme/Footer.qml</file>
+        <file>theme/FrontPage.qml</file>
+        <file>theme/Header.qml</file>
+        <file>theme/Style.qml</file>
+        <file>theme/StyleText.qml</file>
+        <file>theme/qmldir</file>
+    </qresource>
+</RCC>

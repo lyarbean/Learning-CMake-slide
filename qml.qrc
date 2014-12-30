@@ -1,40 +1,49 @@
 <RCC>
     <qresource prefix="/">
-        <file>qml/NestedList.qml</file>
-        <file>qml/Slide.qml</file>
-        <file>qml/theme/BackGround.qml</file>
-        <file>qml/theme/BackPage.qml</file>
-        <file>qml/theme/ContentArea.qml</file>
-        <file>qml/theme/Footer.qml</file>
-        <file>qml/theme/FrontPage.qml</file>
-        <file>qml/theme/Header.qml</file>
-        <file>qml/theme/Style.qml</file>
-        <file>qml/theme/StyleText.qml</file>
-        <file>page/agenda.qml</file>
+        <file>Charts/QChart.js</file>
+        <file>Charts/QChart.qml</file>
+        <file>Charts/QChartGallery.js</file>
+        <file>Charts/QChartGallery.qml</file>
+        <file>Charts/qmldir</file>
+        <file>page/1.qml</file>
+        <file>page/2.qml</file>
+        <file>page/2-1.qml</file>
+        <file>page/2-2.qml</file>
+        <file>page/3.qml</file>
+        <file>page/3-1.qml</file>
+        <file>page/3-2.qml</file>
+        <file>page/3-3.qml</file>
+        <file>page/4.qml</file>
+        <file>page/4-1.qml</file>
+        <file>page/4-2.qml</file>
+        <file>page/4-3.qml</file>
+        <file>page/4-4.qml</file>
+        <file>page/4-5.qml</file>
+        <file>page/5.qml</file>
+        <file>page/5-1.qml</file>
+        <file>page/5-2.qml</file>
+        <file>page/5-3.qml</file>
+        <file>page/6.qml</file>
+        <file>page/6-1.qml</file>
+        <file>page/6-2.qml</file>
         <file>page/assets/CMakeLists.html</file>
         <file>page/assets/milliuno.cpp.html</file>
         <file>page/assets/milliuno.h.html</file>
         <file>page/back_page.qml</file>
-        <file>page/build_systems.qml</file>
-        <file>page/cmake_advantage_and_more.qml</file>
-        <file>page/cmake_and_its_family.qml</file>
-        <file>page/cmake_project_structure_a_live_demo.qml</file>
-        <file>page/cmake_project_structure_a_modularized_project.qml</file>
-        <file>page/cmake_project_structure_a_simple_project.qml</file>
         <file>page/front_page.qml</file>
-        <file>page/how_fast_cmake_is.qml</file>
-        <file>page/how_popular_cmake_is.qml</file>
         <file>page/images/Autoconf-automake-process.svg.png</file>
         <file>page/images/buildtime.png</file>
+        <file>page/images/build-system-evolution13.png</file>
         <file>page/images/cmake_in_github.png</file>
+        <file>page/images/cmake_process.png</file>
         <file>page/images/conftime.png</file>
         <file>page/images/emptytime.png</file>
         <file>page/images/kde_projects.png</file>
         <file>page/images/plasma_media_center.png</file>
-        <file>presentation.qml</file>
-        <file>page/ref_chapter.qml</file>
-        <file>page/second_chapter_4.qml</file>
-        <file>qml/theme/qmldir</file>
         <file>Pages.qml</file>
+        <file>page/ref_chapter.qml</file>
+        <file>presentation.qml</file>
+        <file>qml/NestedList.qml</file>
+        <file>qml/Slide.qml</file>
     </qresource>
 </RCC>
