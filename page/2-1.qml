@@ -26,6 +26,10 @@ Slide {
             name: "Scons"
             desc: "http://www.scons.org/, Make replacement"
         }
+        ListElement {
+            name: "GYP"
+            desc: ""
+        }
     }
 
     ListModel {
@@ -35,75 +39,75 @@ Slide {
             desc: "A Makefile generator"
         }
         ListElement {
+            name: "qmake"
+            desc: "Qt's Makefile generator"
+        }
+        ListElement {
             name: "CMake"
-            desc: "A multi-target generator"
+            desc: "A native build tool script generator"
         }
     }
 
-    Item {
+    Column {
         x: contentArea.x + contentArea.width * 0.7
         y: contentArea.y + contentArea.height * 0.8
         width: contentArea.width * 0.2
-        height: 106 * heightScale
+        height: contentArea.height * 0.2
         focus: true
-        Column {
-            anchors.fill: parent
-            spacing: 6 * heightScale
-            Rectangle {
-                focus: true
-                width: parent.width
-                height: 50 * heightScale
-                color: "orange"
-                radius: 5
-                Text {
-                    font.pointSize: tinyFontSize
-                    text: "Tools"
-                    anchors.centerIn: parent
-                }
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: makeView.model= toolsModel
-                }
+        spacing: 6
+        Rectangle {
+            focus: true
+            width: parent.width
+            height: contentArea.height * 0.1
+            color: "orange"
+            radius: 5
+            Text {
+                font.pixelSize: tinyFontSize
+                text: "Tools"
+                anchors.centerIn: parent
             }
-            Rectangle {
-                focus: true
-                width: parent.width
-                height: 50 * heightScale
-                color: "steelblue"
-                radius: 5
-                Text {
-                    font.pointSize: tinyFontSize
-                    text: "Generators"
-                    anchors.centerIn: parent
-                }
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        makeView.model= generatorModel
-                    }
+            MouseArea {
+                anchors.fill: parent
+                onClicked: makeView.model= toolsModel
+            }
+        }
+        Rectangle {
+            focus: true
+            width: parent.width
+            height: contentArea.height * 0.1
+            color: "steelblue"
+            radius: 5
+            Text {
+                font.pixelSize: tinyFontSize
+                text: "Generators"
+                anchors.centerIn: parent
+            }
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    makeView.model= generatorModel
                 }
             }
         }
     }
+
     ListView {
         id: makeView
         x: contentArea.x
         y: contentArea.y
         highlightFollowsCurrentItem: false
         focus: true
-        height: contentArea.height
+        height: contentArea.height * 0.8
         snapMode: ListView.SnapToItem
         currentIndex: 0
-        Component.onCompleted: {
-            width = childrenRect.width
-        }
+        width: contentArea.width * 0.5
         delegate: Rectangle {
-            width: 250 * widthScale
-            height: 50 * heightScale
-            radius: 10 * fontScale
-            color: ["orange", "red", "steelblue", "limegreen"][index % 4]
+            width: contentArea.width * 0.4
+            height: contentArea.height * 0.1
+            radius: 10
+            color: ["orange", "purple", "steelblue", "limegreen"][index % 4]
             Text {
-                font.pointSize: normalFontSize
+                font.pixelSize: normalFontSize
                 anchors.centerIn: parent
                 text: name
             }
@@ -120,7 +124,7 @@ Slide {
         id: highlight
         Rectangle {
             x: makeView.currentItem.x + makeView.currentItem.width
-            height: 50 * heightScale
+            height: makeView.currentItem.height
             color: "lightsteelblue";
             radius: 5
             border {
@@ -130,11 +134,11 @@ Slide {
             Text {
                 id: t
                 anchors.centerIn: parent
-                font.pointSize: tinyFontSize
+                font.pixelSize: smallFontSize
                 wrapMode: Text.WrapAnywhere
                 text: makeView.model.get(makeView.currentIndex).desc
-                onTextChanged:
-                parent.width = t.width + 16
+                Component.onCompleted: parent.width = t.width + 16
+                onTextChanged: parent.width = t.width + 16
 
             }
             y: makeView.currentItem.y

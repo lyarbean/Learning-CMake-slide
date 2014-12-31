@@ -1,25 +1,26 @@
 import QtQuick 2.3
 import "."
 Item {
+    x: parent.x + parent.width * 0.8
+    y: parent.y + parent.height * 0.15
+    width: parent.width * 0.15
     Column {
-        x : theWindow.width - 90 * widthScale
-        y : 50 * heightScale
-        width : 75 * widthScale
-        spacing : 4
-        StyleText {
-            id : slide_page
-            width : parent.width
-            text : "Slide " + currentIndex
-            font.pointSize: 7 * fontScale
-            color : Style.dBlue
+        anchors.fill: parent
+        spacing: 4
+        Text {
+            width: parent.width
+            text: "Slide " + currentIndex
+            font.pixelSize: scriptFontSize
+            color: Style.dBlue
             horizontalAlignment: Text.AlignRight
         }
-        StyleText {
-            width : parent.width
-            text :  Qt.formatDate(new Date())
-            font.pointSize: 7 * fontScale
-            color : Style.dBlue
+        Text {
+            width: parent.width
+            text:  Qt.formatDate(new Date())
+            font.pixelSize: scriptFontSize
+            color: Style.dBlue
             horizontalAlignment: Text.AlignRight
         }
     }
+    // TODO Add Clock
 }

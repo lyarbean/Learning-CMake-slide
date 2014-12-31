@@ -25,7 +25,7 @@ ListView {
                 text: itemName
                 color: itemColor
                 font.family: itemFontFamily
-                font.pointSize: fontSize
+                font.pixelSize: fontSize
                 font.bold: true
                 MouseArea {
                     hoverEnabled: true
@@ -64,14 +64,14 @@ ListView {
                     width: nl.width - subFonSize * 5
                     Text {
                         color: bulletColor;
-                        font.pointSize: subFonSize;
+                        font.pixelSize: subFonSize;
                         text: "\u2022"
                     }
                     Text {
                         id: secondDelegateText
                         width: nl.width
                         font.family: subItemFontFamily
-                        font.pointSize: subFonSize
+                        font.pixelSize: subFonSize
                         text: itemName
                         color: subItemColor
                         MouseArea {

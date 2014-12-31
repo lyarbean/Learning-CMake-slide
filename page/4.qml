@@ -5,4 +5,5 @@ import "../theme"
 Slide {
     headline: "CMake, from A to Z"
     // TODO Add fig that shows how cmake is easy to use////
+    // TODO add a log curve
 }

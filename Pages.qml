@@ -36,7 +36,7 @@ ListModel {
         ref: "page/3-2.qml"
     }
     ListElement {
-        name: "Feature"
+        name: "Features"
         ref: "page/3-3.qml"
     }
     // --

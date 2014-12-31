@@ -5,7 +5,7 @@ Rectangle {
     color: "white"
     Text {
         anchors.centerIn: parent
-        font.pointSize: hugeFontSize
+        font.pixelSize: hugeFontSize
         text: "Thank you!"
         style: Text.Raised
         styleColor: "red"

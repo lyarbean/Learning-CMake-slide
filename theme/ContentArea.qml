@@ -1,8 +1,7 @@
 import QtQuick 2.3
 Item {
-    x : 45 * widthScale
-    y : 85 * heightScale
-    width : (theWindow.minimumWidth- 155) * widthScale
-    height : (theWindow.minimumHeight - 120) * heightScale
-    
+    x : parent.width * 0.1
+    y : parent.height * 0.2
+    width : parent.width * 0.7
+    height: parent.height * 0.75
 }

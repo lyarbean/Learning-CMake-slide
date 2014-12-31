@@ -7,16 +7,16 @@ Slide {
     Rectangle {
         anchors.fill: contentArea
         Column {
-            spacing: 13 * heightScale
-            StyleText {
+            spacing: normalFontSize
+            Text {
                 text: "http://www.elpauer.org/stuff/learning_cmake.pdf"
             }
-            StyleText{
+            Text{
 
                 text: "http://trilinos.org/oldsite/events/kitware_cmake_workshop_2009/presentations/SandiaTrilinosMay2009.pdf"
 
             }
-            StyleText {
+            Text {
                 text: "https://sitweb.oca.eu/IMG/pdf/slides.pdf"
             }
         }

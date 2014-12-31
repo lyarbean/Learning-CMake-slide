@@ -13,14 +13,16 @@ ApplicationWindow {
 
     property real widthScale: 1.0
     property real heightScale: 1.0
-    // PointSize
 
+    // PixelSize ~= PointSize * 1.33
     property real fontScale: 1.0
-    property real tinyFontSize: 14 * fontScale
-    property real smallFontSize: 16 * fontScale
-    property real normalFontSize: 18 * fontScale
-    property real largeFontSize: 24 * fontScale
-    property real hugeFontSize: 32 * fontScale
+    property real scriptFontSize: 7 * 1.33 * fontScale
+    property real tinyFontSize: 10 * 1.33 * fontScale
+    property real smallFontSize: 14 * 1.33 * fontScale
+    property real normalFontSize: 18 * 1.33 * fontScale
+    property real bigFontSize: 22 * 1.33 * fontScale
+    property real largeFontSize: 24 * 1.33 * fontScale
+    property real hugeFontSize: 32 * 1.33 * fontScale
     onWidthChanged: {
         widthScale = width / minimumWidth
         fontScale = Math.min(widthScale, heightScale)
@@ -104,6 +106,7 @@ ApplicationWindow {
     }
 
     // Navigator with preview support
+    // FIXME It's terrible!
     Rectangle {
         id: previewBox
         height: parent.height * 0.3 + 10
@@ -120,16 +123,21 @@ ApplicationWindow {
     }
     Loader {
         id: preview
-        x: previewBox.x + 4
-        y: previewBox.y + 4
+        x: 5 - theWindow.width * -1.35
+        y: theWindow.height * 0.34 + 75
         visible: previewBox.visible
         asynchronous: false
-        onStatusChanged: {
-            if (preview.status ===  Loader.Ready) {
+        width: theWindow.width
+        height: theWindow.height
+        onSourceChanged: {
+            if (item !== null) {
                 item.scale = 0.3
+                console.log("transformOrigin ",transformOrigin)
             }
         }
+        enabled: false
     }
+
     Rectangle {
         z: 999
         id: navigator
