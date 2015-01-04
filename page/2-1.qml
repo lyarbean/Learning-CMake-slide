@@ -1,7 +1,6 @@
 import QtQuick 2.3
 import QtQuick.Controls 1.3
 import "../qml"
-import "../theme"
 
 Slide {
     headline: "Build Systems"
@@ -62,13 +61,17 @@ Slide {
             color: "orange"
             radius: 5
             Text {
-                font.pixelSize: tinyFontSize
+                font.pointSize: tinyFontSize
                 text: "Tools"
                 anchors.centerIn: parent
             }
             MouseArea {
                 anchors.fill: parent
-                onClicked: makeView.model= toolsModel
+
+                onClicked: {
+                    makeView.model = null
+                    makeView.model = toolsModel
+                }
             }
         }
         Rectangle {
@@ -78,14 +81,15 @@ Slide {
             color: "steelblue"
             radius: 5
             Text {
-                font.pixelSize: tinyFontSize
+                font.pointSize: tinyFontSize
                 text: "Generators"
                 anchors.centerIn: parent
             }
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    makeView.model= generatorModel
+                    makeView.model = null
+                    makeView.model = generatorModel
                 }
             }
         }
@@ -105,9 +109,9 @@ Slide {
             width: contentArea.width * 0.4
             height: contentArea.height * 0.1
             radius: 10
-            color: ["orange", "purple", "steelblue", "limegreen"][index % 4]
+            color: Style.lighterRainBow[index % 7]
             Text {
-                font.pixelSize: normalFontSize
+                font.pointSize: normalFontSize
                 anchors.centerIn: parent
                 text: name
             }
@@ -118,6 +122,10 @@ Slide {
                 }
             }
         }
+        populate: Transition {
+            NumberAnimation { properties: "x,y"; duration: 800 }
+        }
+
         highlight: highlight
     }
     Component {
@@ -134,9 +142,9 @@ Slide {
             Text {
                 id: t
                 anchors.centerIn: parent
-                font.pixelSize: smallFontSize
+                font.pointSize: smallFontSize
                 wrapMode: Text.WrapAnywhere
-                text: makeView.model.get(makeView.currentIndex).desc
+                text: makeView.model === null ? "" : makeView.model.get(makeView.currentIndex).desc
                 Component.onCompleted: parent.width = t.width + 16
                 onTextChanged: parent.width = t.width + 16
 

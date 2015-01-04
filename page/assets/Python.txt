@@ -1,0 +1,20 @@
+# Just find Python
+find_package(PythonInterp)
+if(PYTHONINTERP_FOUND)
+    message(${PYTHON_VERSION_STRING})
+    add_custom_command(
+        OUTPUT xx.cpp
+        COMMAND ${PYTHON_EXECUTABLE}
+        ARGS  xx.py > xx.cpp
+        DEPENDS xx.py)
+endif()
+
+
+### Now when to link to Python ...
+
+find_package(PythonLibs)
+if(PYTHONLIBS_FOUND)
+    include_directories(${PYTHON_INCLUDE_DIRS})
+    add_executable(foo foo.cc)
+    target_link_libraries(foo ${PYTHON_LIBRARIES})
+endif()

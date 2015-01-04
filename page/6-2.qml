@@ -4,7 +4,10 @@ import "../qml"
 import "../theme"
 Slide {
     headline: "Port to CMake"
-    subHeadline: "CMake module"
-    // Issues and solutions
-
+    subHeadline: "Just for Linux"
+    // at least, for now
+    // CMake is cross-platform, but not CMakeLists.txt
+    // Need condition setting for other platform, says, things OS specific
+    // 
+    //
 }

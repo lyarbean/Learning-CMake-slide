@@ -5,4 +5,12 @@ import "../theme"
 Slide {
     headline: "CMake, from A to Z"
     subHeadline: "Miscellaneous"
+    // CMAKE_XX_DIRS
+    //
+    // configure file, generate from template, include current binary dir
+    //
+    // installation
+    //
+    // function and cmake module
+    // 
 }

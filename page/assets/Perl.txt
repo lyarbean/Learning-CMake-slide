@@ -1,0 +1,20 @@
+# Just find Perl
+find_package(Perl)
+if(PERL_FOUND)
+    message(${PERL_VERSION_STRING})
+    add_custom_command(
+        OUTPUT xx.cpp
+        COMMAND ${PERL_EXECUTABLE}
+        ARGS  xx.pl > xx.cpp
+        DEPENDS xx.pl)
+endif()
+
+
+### Now when to link to Perl ...
+
+find_package(PerlLibs)
+if(PERLLIBS_FOUND)
+    include_directories(${PERL_INCLUDE_PATH})
+    add_executable(foo foo.cc)
+    target_link_libraries(foo ${PERL_LIBRARY})
+endif()

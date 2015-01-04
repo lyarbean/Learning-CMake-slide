@@ -1,0 +1,8 @@
+find_package(GTK2 2.10 REQUIRED gtk gtkmm) # glade
+if(GTK2_FOUND)
+    message(${GTK2_VERSION})
+    include_directories(${GTK2_INCLUDE_DIRS})
+    add_executable(foo foo.cc)
+    target_link_libraries(foo ${GTK2_LIBRARIES})
+endif()
+

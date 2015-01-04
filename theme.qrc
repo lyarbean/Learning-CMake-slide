@@ -6,7 +6,5 @@
         <file>theme/Footer.qml</file>
         <file>theme/FrontPage.qml</file>
         <file>theme/Header.qml</file>
-        <file>theme/Style.qml</file>
-        <file>theme/qmldir</file>
     </qresource>
 </RCC>

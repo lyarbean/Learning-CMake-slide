@@ -14,6 +14,7 @@ Slide {
         id: im
         x: (parent.width - width) / 2
         y: (parent.height - height) / 2
+        width: contentArea.width
         fillMode: Image.PreserveAspectFit
         source: Qt.resolvedUrl("images/google_trends.png")
     }

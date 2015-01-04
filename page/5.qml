@@ -4,4 +4,5 @@ import "../qml"
 import "../theme"
 Slide {
     headline: "Beyond Make"
+    // TODO not just make
 }

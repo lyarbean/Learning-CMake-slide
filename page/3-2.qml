@@ -74,9 +74,9 @@ Slide {
             width: contentArea.width * 0.3
             height: contentArea.height * 0.1
             radius: 10
-            color: ["orange", "purple", "steelblue", "limegreen"][index % 4]
+            color: Style.lighterRainBow[index % 7]
             Text {
-                font.pixelSize: normalFontSize
+                font.pointSize: normalFontSize
                 anchors.centerIn: parent
                 text: name
             }
@@ -103,7 +103,7 @@ Slide {
             Text {
                 id: t
                 anchors.centerIn: parent
-                font.pixelSize: tinyFontSize
+                font.pointSize: tinyFontSize
                 wrapMode: Text.WrapAnywhere
                 text: makeView.model.get(makeView.currentIndex).desc
                 Component.onCompleted: parent.width = t.width + 16

@@ -1,40 +1,52 @@
-import QtQuick 2.2
-import "../qml"
-import "../theme"
+import QtQuick 2.3
 
+import "../qml"
 Slide {
     headline: "CMake, the right way"
     subHeadline: "Features"
-    ListView {
-        x: contentArea.x
-        y: contentArea.y
-        focus: true
-        height: contentArea.height * 0.8
-        snapMode: ListView.SnapToItem
-        model: [
+
+    property var  items: [
             "Just works wherever a modern c++ compiler lives",
             "Just works with millions LOC, e.g. KDE",
             "Just works with gmake, ninja, Xcode and VisualStudio",
             "Just works with many languages, e.g. C, C++, Object C/C++, Fortran, Ada, Java",
-            "Just gives better denpendency resolution",
+            "Just gives better denpendency resolution than nothing",
             "Just provides easy finders",
-            "Just is a macro languages with simple syntax and function support, and you are programmer!",
+            "Just is a macro language with simple syntax and function support, and you are THE programmer!"
         ]
+
+    MouseArea {
+        anchors.fill: header
+        onClicked:
+        if (view.model.count < items.length) {
+            view.model.append({"name": items[view.model.count]})
+            view.incrementCurrentIndex()
+        }
+    }
+    ListView {
+        id: view
+        anchors.fill: contentArea
+        focus: true
+        //height: contentArea.height * 0.8
+        snapMode: ListView.SnapToItem
+        model: ListModel {}
         spacing: contentArea.height * 0.01
         delegate: Rectangle {
-            height: childrenRect.height * 1.2
             width: contentArea.width
-            radius: childrenRect.height * 0.08
-            color: ["orange", "purple", "steelblue", "darkgreen"][index % 4]
-            Text {
-                x: height * 0.1
-                y: height * 0.1
-                width: contentArea.width
-                color: "white"
-                font.pixelSize: smallFontSize
-                wrapMode: Text.WordWrap
-                text: modelData
+            height: childrenRect.height + contentArea.width * 0.02
+            radius: contentArea.width * 0.01
+            color: Style.lighterRainBow[index % 7]
+            StyleText {
+                x: contentArea.width * 0.01
+                y: contentArea.width * 0.01
+                width: parent.width * 0.96
+                text: name
+                color: ["black", "black", "black", "white", "white", "white", "black"][index % 7]
+                font.pointSize: smallFontSize
             }
+        }
+        add: Transition {
+            NumberAnimation { properties: "x,y"; from: 200; duration: 200 }
         }
 
     }

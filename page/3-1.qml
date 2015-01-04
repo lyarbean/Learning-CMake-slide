@@ -17,7 +17,7 @@ Slide {
             Text {
                 x : 0.05 * width
                 y : 0.05 * height
-                font.pixelSize: normalFontSize
+                font.pointSize: normalFontSize
                 text:"CMake in github"
                 MouseArea {
                     anchors.fill: parent
@@ -34,7 +34,7 @@ Slide {
             Text {
                 x : 0.05 * width
                 y : 0.05 * height
-                font.pixelSize: normalFontSize
+                font.pointSize: normalFontSize
                 text: "KDE projects tree"
                 MouseArea {
                     anchors.fill: parent
@@ -51,7 +51,7 @@ Slide {
             Text {
                 x : 0.05 * width
                 y : 0.05 * height
-                font.pixelSize: normalFontSize
+                font.pointSize: normalFontSize
                 id: t
                 text: "CMake wikipedia"
                 MouseArea {
@@ -69,6 +69,7 @@ Slide {
         x: (parent.width - width) / 2
         y: (parent.height - height) / 2
         fillMode: Image.PreserveAspectFit
+        height: contentArea.height
     }
     MouseArea {
         anchors.fill: im
@@ -81,6 +82,8 @@ Slide {
         } else if (event.key === Qt.Key_Equal) {
             im.scale = im.scale * 1.25
             event.accepted = true
+        } else if (event.key === Qt.Key_Space) {
+            im.source = ""
         }
     }
 

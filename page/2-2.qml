@@ -8,9 +8,11 @@ Slide {
     subHeadline: "Autotools process vs. CMake Process"
     focus: true
     Image {
+        id: autotools
         x: contentArea.x
         y: contentArea.y
-        id: autotools
+        height: contentArea.height
+        fillMode: Image.PreserveAspectFit
         source: Qt.resolvedUrl("images/Autoconf-automake-process.svg.png")
         MouseArea {
             anchors.fill: parent
@@ -18,10 +20,10 @@ Slide {
         }
     }
     Rectangle {
-        x: contentArea.x + 0.5 * contentArea.width
+        x: contentArea.x + contentArea.width - 350
         y: contentArea.y
         id: cmake
-        scale: contentArea.width / 600
+        scale: contentArea.width / 800
         width: 350
         height: 260
         MouseArea {

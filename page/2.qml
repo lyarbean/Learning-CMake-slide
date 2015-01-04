@@ -1,7 +1,5 @@
 import QtQuick 2.3
 import "../qml"
-import "../theme"
-
 
 Slide {
     headline: "Build Systems"

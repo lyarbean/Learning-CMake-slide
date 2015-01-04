@@ -1,10 +1,5 @@
 <RCC>
     <qresource prefix="/">
-        <file>Charts/QChart.js</file>
-        <file>Charts/QChart.qml</file>
-        <file>Charts/QChartGallery.js</file>
-        <file>Charts/QChartGallery.qml</file>
-        <file>Charts/qmldir</file>
         <file>page/1.qml</file>
         <file>page/2.qml</file>
         <file>page/2-1.qml</file>
@@ -45,5 +40,8 @@
         <file>presentation.qml</file>
         <file>qml/NestedList.qml</file>
         <file>qml/Slide.qml</file>
+        <file>qml/Style.qml</file>
+        <file>qml/qmldir</file>
+        <file>qml/StyleText.qml</file>
     </qresource>
 </RCC>

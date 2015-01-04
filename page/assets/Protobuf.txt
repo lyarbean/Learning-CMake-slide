@@ -1,0 +1,9 @@
+find_package(Protobuf)
+if(PROTOBUF_FOUND)
+    # Optionally
+    set(PROTOBUF_IMPORT_DIRS  "path for .proto files" " another path for .proto files")
+    include_directories(${PROTOBUF_INCLUDE_DIRS})
+    add_executable(foo foo.cc)
+    target_link_libraries(foo ${PROTOBUF_LIBRARIES})
+endif()
+

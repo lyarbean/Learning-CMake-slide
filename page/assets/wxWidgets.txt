@@ -1,0 +1,7 @@
+find_package(wxWidgets REQUIRED core base)
+if(wxWidgets_FOUND)
+    include(${wxWidgets_USE_FILE})
+    add_executable(foo foo.cc)
+    target_link_libraries(foo ${wxWidgets_LIBRARIES})
+endif()
+
