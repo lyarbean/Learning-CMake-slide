@@ -1,18 +1,105 @@
 import QtQuick 2.2
-import QtWebKit 3.0
+import QtQuick.Controls 1.2
+import io.thp.pyotherside 1.4
+
 import "../qml"
-import "../theme"
+
 Slide {
     headline: "CMake, from A to Z"
-    subHeadline: "Flags and Definitions"
-    StyleText {
+    subHeadline: "Variables"
+    Column{
         anchors.fill: contentArea
-        text:'add_definitions("-D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -D_LINUX_GUI_")
-set(CMAKE_C_FLAGS "-pipe -O2")
-set(CMAKE_CXX_FLAGS "-pipe -O3")
-set(CMAKE_FORTRAN_FLAGS "${CMAKE_C_FLAGS} -mtune=native -mavx")
-set(CMAKE_LINK_LIBRARY_FLAG "--unresolved-symbols=report-all")
-'
+        spacing: 8
+        Row {
+            spacing: 8
+            Repeater {
+                model: ListModel {
+                    ListElement {
+                        name: "Flags"
+                        txt: "flagsanddefinitions.txt"
+                    }
+                    ListElement {
+                        name: "Properties"
+                        txt: "properties.txt"
+                    }
+                }
+                Rectangle {
+                    radius: 4
+                    height: childrenRect.height + 16
+                    width: childrenRect.width + 16
+                    color: Style.lighterRainBow[index % 7]
+                    StyleText {
+                        x: 8
+                        y: 8
+                        text: name
+                        color: Style.rainBowForeGround[index % 7]
+                        MouseArea {
+                            anchors.fill: parent
+                            onClicked: {
+                                changeFile("assets/" + txt)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        ScrollView {
+            width: contentArea.width
+            height: contentArea.height * 0.9
+            id: codeReader
+            highlightOnFocus: true
+            frameVisible: true
+            property string text
+            TextEdit {
+                activeFocusOnPress: false
+                selectByMouse: true
+                readOnly: true
+                selectedTextColor: "indigo"
+                selectionColor: "#eee"
+                textFormat: Text.RichText
+                text: codeReader.text
+                font.pointSize: tinyFontSize
+            }
+        }
+    }
+    // TODO A listview and use +/- to navigate
+    //
+    //
+    // Boost
+    // GTK2
+    // SWIG
+    // Lua
+    // wxWidgets
+    // Perl
+    // Python
+    // Protobuf
+    // Qt5
+    //
+    // PKGCONFIG
+    // Cairo
+    // MySQL
+    // Xerces-c
+    // Compiler
+    // Fortran
+
+    function changeFile(file) {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                codeReader.text = py.call_sync("renderCode.format", [xhr.responseText, "cmake"])
+            }
+        }
+        xhr.open("GET", Qt.resolvedUrl(file))
+        xhr.send();
     }
 
+    Python {
+        id: py // renderCode.py
+        Component.onCompleted: {
+            // Add the directory of this .qml file to the search path
+            addImportPath(Qt.resolvedUrl('assets'));
+            // Import the main module and load the data
+            importModule_sync('renderCode')
+        }
+    }
 }

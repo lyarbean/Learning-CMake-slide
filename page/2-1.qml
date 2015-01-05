@@ -9,8 +9,8 @@ Slide {
     ListModel {
         id: toolsModel
         ListElement {
-            name: "GNU Make (gmake)"
-            desc: "the standard implementation of make for Linux and OS X."
+            name: "GNU Make"
+            desc: "gmake, the standard implementation of make for Linux and OS X."
             cite: "Arnold Robbins (2005), Unix in a Nutshell, Fourth Edition, O'Reilly"
         }
         ListElement {
@@ -19,15 +19,19 @@ Slide {
         }
         ListElement {
             name: "Ninja"
-            desc: "http://martine.github.io/ninja/, Make replacement"
+            desc: "http://martine.github.io/ninja/"
         }
         ListElement {
             name: "Scons"
-            desc: "http://www.scons.org/, Make replacement"
+            desc: "http://www.scons.org/"
         }
         ListElement {
             name: "GYP"
-            desc: ""
+            desc: "https://code.google.com/p/gyp/"
+        }
+        ListElement {
+            name: "QBS"
+            desc: "http://qt-project.org/wiki/qbs"
         }
     }
 
@@ -107,13 +111,16 @@ Slide {
         width: contentArea.width * 0.5
         delegate: Rectangle {
             width: contentArea.width * 0.4
-            height: contentArea.height * 0.1
-            radius: 10
+            height: 40 * fontScale
+            radius: 5
             color: Style.lighterRainBow[index % 7]
             Text {
-                font.pointSize: normalFontSize
+                x: 5
+                y: 5
                 anchors.centerIn: parent
+                font.pointSize: normalFontSize
                 text: name
+                color: Style.rainBowForeGround[index % 7]
             }
             MouseArea {
                 anchors.fill: parent
@@ -132,22 +139,20 @@ Slide {
         id: highlight
         Rectangle {
             x: makeView.currentItem.x + makeView.currentItem.width
-            height: makeView.currentItem.height
+            height: childrenRect.height + 8
+            width: childrenRect.width + 8
             color: "lightsteelblue";
             radius: 5
             border {
                 width: 4
                 color:"steelblue"
             }
-            Text {
+            StyleText {
                 id: t
-                anchors.centerIn: parent
+                x: 4
+                width: 0.6 * contentArea.width
                 font.pointSize: smallFontSize
-                wrapMode: Text.WrapAnywhere
                 text: makeView.model === null ? "" : makeView.model.get(makeView.currentIndex).desc
-                Component.onCompleted: parent.width = t.width + 16
-                onTextChanged: parent.width = t.width + 16
-
             }
             y: makeView.currentItem.y
             Behavior on y {

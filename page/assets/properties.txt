@@ -1,0 +1,34 @@
+# From http://www.cmake.org/cmake/help/v3.0/manual/cmake-buildsystem.7.html
+set(srcs archive.cpp zip.cpp)
+if (LZMA_FOUND)
+    list(APPEND srcs lzma.cpp)
+endif()
+add_library(archive SHARED ${srcs})
+if (LZMA_FOUND)
+    # The archive library sources are compiled with -DBUILDING_WITH_LZMA
+    target_compile_definitions(archive PRIVATE BUILDING_WITH_LZMA)
+endif()
+target_compile_definitions(archive INTERFACE USING_ARCHIVE_LIB)
+
+add_executable(consumer)
+# Link consumer to archive and consume its usage requirements. The consumer
+# executable sources are compiled with -DUSING_ARCHIVE_LIB.
+target_link_libraries(consumer archive)
+
+
+add_library(serialization serialization.cpp)
+target_compile_definitions(serialization INTERFACE USING_SERIALIZATION_LIB)
+
+add_library(archiveExtras extras.cpp)
+
+target_link_libraries(archiveExtras
+    PUBLIC archive
+    PRIVATE serialization
+    )
+add_executable(consumer2 consumer2.cpp)
+target_link_libraries(consumer2 archiveExtras)
+
+# PIE gcc -pie ...
+add_executable(exe1 exe1.cpp)
+set_property(TARGET exe1 PROPERTY POSITION_INDEPENDENT_CODE ON)
+

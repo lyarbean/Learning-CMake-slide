@@ -34,6 +34,7 @@ Slide {
                 y: 4
                 id : t
                 text : name; // theModel.get(modelData).name
+                color: Style.rainBowForeGround[index % 7]
                 MouseArea {
                     hoverEnabled: true
                     anchors.fill:  parent

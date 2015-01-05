@@ -1,21 +1,39 @@
 import QtQuick 2.2
-import QtWebKit 3.0
+import io.thp.pyotherside 1.4
+
 import "../qml"
 Slide {
     headline: "CMake, from A to Z"
     subHeadline: "Hello CMake"
-    StyleText {
+    TextEdit {
+        id: textEdit
         anchors.fill: contentArea
-        text:"// wxPython-src-2.8.12.1/samples/keyboard
-project(Keyboard)
-cmake_minimum_required(VERSION 3.0)
-set(KEYBOARD_SRC keyboard.cpp)
-find_package(wxWidgets REQUIRED core base)
-include(${wxWidgets_USE_FILE})
-add_executable(keyboard ${KEYBOARD_SRC})
-target_link_libraries(keyboard ${wxWidgets_LIBRARIES})
-        "
-    
+        activeFocusOnPress: false
+        selectByMouse: true
+        readOnly: true
+        selectedTextColor: "indigo"
+        selectionColor: "#eee"
+        textFormat: Text.RichText
+        font.pointSize: smallFontSize
     }
-    // TODO add_library? file?
+    Component.onCompleted: {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                textEdit.text = py.call_sync("renderCode.format", [xhr.responseText, "cmake"])
+            }
+        }
+        xhr.open("GET", Qt.resolvedUrl("assets/hellocmake.txt"))
+        xhr.send();
+    }
+
+    Python {
+        id: py // renderCode.py
+        Component.onCompleted: {
+            // Add the directory of this .qml file to the search path
+            addImportPath(Qt.resolvedUrl('assets'));
+            // Import the main module and load the data
+            importModule_sync('renderCode')
+        }
+    }
 }

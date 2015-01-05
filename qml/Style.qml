@@ -19,4 +19,6 @@ QtObject {
     Qt.lighter("green", 1.2), Qt.lighter("blue", 1.2), Qt.lighter("indigo", 1.2), Qt.lighter("violet", 1.2)]
     property variant darkerRainBow : [Qt.darker("red"), Qt.darker("orange"), Qt.darker("yellow"),
     Qt.darker("green"), Qt.darker("blue"), Qt.darker("indigo"), Qt.darker("violet")]
+
+     property variant rainBowForeGround: ["black", "black", "black", "white", "white", "white", "black"]
 }

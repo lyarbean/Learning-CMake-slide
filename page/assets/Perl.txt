@@ -9,9 +9,7 @@ if(PERL_FOUND)
         DEPENDS xx.pl)
 endif()
 
-
 ### Now when to link to Perl ...
-
 find_package(PerlLibs)
 if(PERLLIBS_FOUND)
     include_directories(${PERL_INCLUDE_PATH})

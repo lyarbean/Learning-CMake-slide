@@ -7,16 +7,24 @@ Rectangle {
     property string functionString : ""
     property string slideSubject : ""
     property string dateAndPlace : ""
-    width: 840
-    height: 525
     property real fontScale: Math.max(1.0, Math.min(width / 840.0, height/ 525))
-    property real scriptFontSize: 7 *  fontScale
-    property real tinyFontSize: 10 * fontScale
-    property real smallFontSize: 14 * fontScale
-    property real normalFontSize: 18 * fontScale
-    property real bigFontSize: 22 * fontScale
-    property real largeFontSize: 24 * fontScale
-    property real hugeFontSize: 32 * fontScale
+
+    onFontScaleChanged: {
+        scriptFontSize = fontScale * 7.0
+        tinyFontSize   = fontScale * 10.0
+        smallFontSize  = fontScale * 14.0
+        normalFontSize = fontScale * 18.0
+        bigFontSize    = fontScale * 22.0
+        largeFontSize  = fontScale * 24.0
+        hugeFontSize   = fontScale * 32.0
+    }
+    property real scriptFontSize: 7.0
+    property real tinyFontSize:   10.0
+    property real smallFontSize:  14.0
+    property real normalFontSize: 18.0
+    property real bigFontSize:    22.0
+    property real largeFontSize:  24.0
+    property real hugeFontSize:   32.0
 
     Column {
         spacing: parent.height * 0.01

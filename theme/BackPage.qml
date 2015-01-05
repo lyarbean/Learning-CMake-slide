@@ -3,17 +3,15 @@ import "."
 
 Rectangle {
     color: "white"
-    property real widthScale: parent.width / 840
-    property real heightScale: parent.height / 525 
 
     // PixelSize ~= PointSize * fScale
-    property real fScale: 1.0
-    property real fontScale: Math.min(widthScale, heightScale)
-    property real hugeFontSize: 32 * fScale * fontScale
+    property real fontScale: Math.min(width / 840, height / 525 )
+    onFontScaleChanged: hugeFontSize = 32 * fontScale
+    property real hugeFontSize: 32
 
     Text {
         anchors.centerIn: parent
-        font.pixelSize: hugeFontSize 
+        font.pointSize: hugeFontSize
         text: "Thank you!"
         style: Text.Raised
         styleColor: "red"

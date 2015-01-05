@@ -9,9 +9,7 @@ if(PYTHONINTERP_FOUND)
         DEPENDS xx.py)
 endif()
 
-
 ### Now when to link to Python ...
-
 find_package(PythonLibs)
 if(PYTHONLIBS_FOUND)
     include_directories(${PYTHON_INCLUDE_DIRS})

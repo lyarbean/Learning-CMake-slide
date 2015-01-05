@@ -42,4 +42,5 @@ Rectangle {
     Footer {
         id: footer
     }
+
 }

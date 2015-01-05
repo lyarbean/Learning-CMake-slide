@@ -28,6 +28,7 @@ Slide {
                     StyleText {
                         anchors.centerIn: parent
                         text: modelData
+                        color: Style.rainBowForeGround[index % 7]
                     }
 
                     MouseArea {

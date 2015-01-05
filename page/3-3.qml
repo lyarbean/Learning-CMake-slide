@@ -10,7 +10,7 @@ Slide {
             "Just works with millions LOC, e.g. KDE",
             "Just works with gmake, ninja, Xcode and VisualStudio",
             "Just works with many languages, e.g. C, C++, Object C/C++, Fortran, Ada, Java",
-            "Just gives better denpendency resolution than nothing",
+            "Just gives better denpendency resolution",
             "Just provides easy finders",
             "Just is a macro language with simple syntax and function support, and you are THE programmer!"
         ]
@@ -41,7 +41,7 @@ Slide {
                 y: contentArea.width * 0.01
                 width: parent.width * 0.96
                 text: name
-                color: ["black", "black", "black", "white", "white", "white", "black"][index % 7]
+                color: Style.rainBowForeGround[index % 7]
                 font.pointSize: smallFontSize
             }
         }

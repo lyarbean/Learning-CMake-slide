@@ -1,0 +1,15 @@
+add_definitions("-D_LARGEFILE_SOURCE
+                -D_FILE_OFFSET_BITS=64
+                -D_LINUX_GUI_")
+remove_definitions("__FreeBSD__")
+
+set(CMAKE_C_FLAGS "-pipe")
+set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS} -O3")
+set(CMAKE_FORTRAN_FLAGS "${CMAKE_C_FLAGS} -mtune=native -mavx")
+set(CMAKE_FORTRAN_FLAGS_RELEASE
+    "${CMAKE_C_FLAGS_RELEASE} -mtune=native -mavx")
+set(CMAKE_LINK_LIBRARY_FLAG "--unresolved-symbols=report-all")
+
+if("${CMAKE_BUILD_TYPE}" STREQUAL "Release")
+    add_definitions(-DNDEBUG)
+endif()
