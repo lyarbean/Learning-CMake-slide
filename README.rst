@@ -9,7 +9,9 @@ Requirements
 
 Play
 ====
-Come here and run `qmlscene presentation.qml`
+At the top level, run: 
+    
+    `qmlscene presentation.qml`
 
 Keys
 ====
