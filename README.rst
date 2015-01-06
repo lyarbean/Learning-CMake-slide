@@ -1,0 +1,6 @@
+> This is a slide for learning CMake.
+> There are many things to add, be patient!
+
+Requirement
+-----------
+
