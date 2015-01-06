@@ -21,9 +21,6 @@
         <file>page/6.qml</file>
         <file>page/6-1.qml</file>
         <file>page/6-2.qml</file>
-        <file>page/assets/CMakeLists.html</file>
-        <file>page/assets/milliuno.cpp.html</file>
-        <file>page/assets/milliuno.h.html</file>
         <file>page/back_page.qml</file>
         <file>page/front_page.qml</file>
         <file>page/images/Autoconf-automake-process.svg.png</file>

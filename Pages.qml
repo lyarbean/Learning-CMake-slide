@@ -56,14 +56,14 @@ ListModel {
         name: "Finder"
         ref: "page/4-3.qml"
     }
-    ListElement {
-        name: "Modularized Source Code Layout"
-        ref: "page/4-4.qml"
-    }
-    ListElement {
-        name: "Miscellaneous"
-        ref: "page/4-5.qml"
-    }
+//    ListElement {
+//        name: "Modularized Source Code Layout"
+//        ref: "page/4-4.qml"
+//    }
+//    ListElement {
+//        name: "Miscellaneous"
+//        ref: "page/4-5.qml"
+//    }
     // --
     ListElement {
         name: "Beyond Make"

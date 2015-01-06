@@ -1,17 +1,9 @@
 import QtQuick 2.2
 import "../qml"
-import "../theme"
 
 Slide {
     headline: "CMake, the right way"
     subHeadline: "Family"
-    // The Kitware build and test chain fig
-    //CMake is a softwere development solutions:
-    
-    //* CMake, the make generator :-)
-    //* CTest, the test system
-    //* CPack, the packager
-    //* *CDash*, the dashboard
 
     Rectangle {
         id: box
@@ -30,15 +22,17 @@ Slide {
             drag.target: im
         }
     }
-        Keys.onReleased: {
-            if (event.key === Qt.Key_Minus) {
-                box.scale = box.scale * 0.8
-                event.accepted = true
-            } else if (event.key === Qt.Key_Equal) {
-                box.scale = box.scale * 1.25
-                event.accepted = true
-            }
+
+    Keys.onReleased: {
+        if (event.key === Qt.Key_Minus) {
+            box.scale = box.scale * 0.8
+            event.accepted = true
+        } else if (event.key === Qt.Key_Equal) {
+            box.scale = box.scale * 1.25
+            event.accepted = true
         }
+    }
+
     ListModel {
         id: cmakeModel
         ListElement {
@@ -68,15 +62,14 @@ Slide {
         focus: true
         height: contentArea.height * 0.8
         snapMode: ListView.SnapToItem
-        currentIndex: 0
+        currentIndex: -1
         width: contentArea.width * 0.3
         delegate: Rectangle {
             width: contentArea.width * 0.3
             height: contentArea.height * 0.1
             radius: 10
             color: Style.lighterRainBow[index % 7]
-            Text {
-                font.pointSize: normalFontSize
+            StyleText {
                 anchors.centerIn: parent
                 text: name
             }
@@ -100,14 +93,14 @@ Slide {
                 width: 4
                 color:"steelblue"
             }
-            Text {
+            StyleText {
+                x: 4
                 id: t
                 anchors.centerIn: parent
-                font.pointSize: tinyFontSize
                 wrapMode: Text.WrapAnywhere
                 text: makeView.model.get(makeView.currentIndex).desc
-                Component.onCompleted: parent.width = t.width + 16
-                onTextChanged: parent.width = t.width + 16
+                Component.onCompleted: parent.width = t.width + 20
+                onTextChanged: parent.width = t.width + 20
 
             }
             y: makeView.currentItem.y

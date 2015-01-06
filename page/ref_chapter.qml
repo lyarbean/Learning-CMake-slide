@@ -1,6 +1,5 @@
 import QtQuick 2.0
 import "../qml"
-import "../theme"
 
 Slide {
     headline: "References"

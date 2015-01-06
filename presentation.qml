@@ -87,9 +87,9 @@ ApplicationWindow {
     Rectangle {
         id: noteEdit
         y: parent.height * 0.65
-        x: parent.width * 0.65
+        x: parent.width * 0.25
         height: parent.height * 0.3
-        width: parent.width * 0.3
+        width: parent.width * 0.72
         visible: false
         focus: true
         radius: 5
