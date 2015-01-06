@@ -5,7 +5,9 @@ Requirements
 
 * Qt >= 5.1.0
 * Python >= 3.3.0
-* [pyotherside-1.4](https://github.com/thp/pyotherside)
+* Pyotherside-1.4_
+
+.. _Pyotherside-1.4: https://github.com/thp/pyotherside
 
 Play
 ====
