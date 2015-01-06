@@ -1,18 +1,48 @@
 import QtQuick 2.2
-import QtWebKit 3.0
+import QtQuick.Controls 1.2
+import io.thp.pyotherside 1.4
 import "../qml"
-import "../theme"
+
 Slide {
     headline: "Beyond Make"
     subHeadline: "CTest"
-    // Add example
-    //
-    // t1 is executable
-    // include(CTest)
-    // add_test(t1 test1)
-    // make test
-    //
-    // show milliuno test
-    //
-    // CDASH integration, not tried yet
+    ScrollView {
+        anchors.fill: contentArea
+        id: codeReader
+        highlightOnFocus: true
+        frameVisible: true
+        property string text
+        TextEdit {
+            activeFocusOnPress: false
+            selectByMouse: true
+            readOnly: true
+            selectedTextColor: "indigo"
+            selectionColor: "#eee"
+            textFormat: Text.RichText
+            text: codeReader.text
+            font.pointSize: smallFontSize
+        }
+    }
+    Component.onCompleted: showCode("assets/ctest.txt")
+
+    function showCode(file) {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === XMLHttpRequest.DONE) {
+                codeReader.text = py.call_sync("renderCode.format", [xhr.responseText, "cmake"])
+            }
+        }
+        xhr.open("GET", Qt.resolvedUrl(file))
+        xhr.send();
+    }
+
+    Python {
+        id: py // renderCode.py        
+        Component.onCompleted: {
+            // Add the directory of this .qml file to the search path
+            addImportPath(Qt.resolvedUrl('assets'));
+            // Import the main module and load the data
+            importModule_sync('renderCode')
+        }
+    }
 }

@@ -1,20 +1,20 @@
 # project(OpenFlex)
 # add_subdirectory(tinyfftw)
 # tinyfftw/CMakeLists.txt: project(TinyFFTW)
-${CMAKE_SOURCE_DIR} # the root of OpenFlex
-${CMAKE_BINARY_DIR} # the directory cmake is executed
+message(${CMAKE_SOURCE_DIR}) # the root of OpenFlex
+message(${CMAKE_BINARY_DIR}) # the directory cmake is executed
 
-${OpenFlex_SOURCE_DIR} # Same as ${CMAKE_SOURCE_DIR}
-${OpenFlex_BINARY_DIR} # Same as ${CMAKE_BINARY_DIR}
+message(${OpenFlex_SOURCE_DIR}) # Same as ${CMAKE_SOURCE_DIR}
+message(${OpenFlex_BINARY_DIR}) # Same as ${CMAKE_BINARY_DIR}
 
-${TinyFFTW_SOURCE_DIR} # the subdirectory tinyfftw
-${TinyFFTW_BINARY_DIR}
+message(${TinyFFTW_SOURCE_DIR}) # the subdirectory tinyfftw
+message(${TinyFFTW_BINARY_DIR})
 
-${PROJECT_SOURCE_DIR} #?
-${PROJECT_BINARY_DIR} #?
+message(${PROJECT_SOURCE_DIR}) #?
+message(${PROJECT_BINARY_DIR}) #?
 
-${CMAKE_CURRENT_SOURCE_DIR} #?
-${CMAKE_CURRENT_BINARY_DIR} #?
+message(${CMAKE_CURRENT_SOURCE_DIR}) #?
+message(${CMAKE_CURRENT_BINARY_DIR}) #?
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 

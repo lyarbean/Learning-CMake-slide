@@ -4,8 +4,8 @@ import "../qml"
 import "../theme"
 Slide {
     headline: "Beyond Make"
-    subHeadline: "Doxygen"
-    // make docs
-    // need this?
-
+    subHeadline: "Dependency Graph"
+    // We have taget_link_libraries, then cmake knows it...
+    // Show a figure and commant
+    //
 }

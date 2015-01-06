@@ -19,105 +19,87 @@ Slide {
             drag.target: parent
         }
     }
-    Rectangle {
+    MouseArea {
         x: contentArea.x + contentArea.width - 350
         y: contentArea.y
         id: cmake
-        scale: contentArea.width / 800
-        width: 350
-        height: 260
-        MouseArea {
-            anchors.fill: parent
-            drag.target: parent
-        }
-        color:"white"
-        Row {
-            spacing: 80
-            Column {
-                spacing: 30
-                width: 150
-                height:  260
-                Text {text: "Configure Step"}
-                Rectangle {
-                    color:"white"
-                    border {
-                        width: 4
-                        color: "orange"
-                    }
-                    radius: 4
-                    width: 150
-                    height:  260
-                    Column {
-                        spacing: 20
-                        x: 20
-                        y: 20
-                        width: 150
-                        Rectangle {
-                            width: 150
-                            height: 60
-                            border {
-                                width: 4
-                                color: "orange"
-                            }
-                            radius: 4
-                            Text {
-                                anchors.centerIn: parent
-                                text: "Read CMakeCache.txt"
-                            }
-                        }
-                        Rectangle {
-                            width: 150
-                            height: 60
-                            border {
-                                width: 4
-                                color: "orange"
-                            }
-                            radius: 4
-                            Text {
-                                anchors.centerIn: parent
-                                text: "Read CMakeLists.txt"
-                            }
-                        }
-                        Rectangle {
-                            width: 150
-                            height: 60
-                            border {
-                                width: 4
-                                color: "orange"
-                            }
-                            radius: 4
-                            Text {
-                                anchors.centerIn: parent
-                                text: "Write CMakeCache.txt"
-                            }
-                        }
-                    }
-                }
+        height: contentArea.height
+        width: contentArea.width * 0.3
+        drag.target: cmake
+        Rectangle {
+            width: parent.width
+            height: contentArea.height * 0.3
+            color: "white"
+            border {
+                width: 4
+                color: "orange"
             }
-            Rectangle {
-                width: 120
-                height: 260
-                Column{
-                    spacing: 30
-                    Text {text: "Generate Step"}
-                    Rectangle {
-                        width: 120
-                        height: 60
-                        border {
-                            width: 4
-                            color: "orange"
-                        }
-                        radius: 4
-                        Text {
-                            anchors.centerIn: parent
-                            text: "Write Makefiles"
-                        }
-                    }
-                }
+            radius: 4
+            StyleText {
+                x: 4
+                y: 4
+                id: step
+                text: "Configure Step"
+                font.pointSize: tinyFontSize
             }
 
+            ListView {
+                enabled: false
+                x: 16
+                y: contentArea.height * 0.06
+                spacing: contentArea.height * 0.02
+                width: parent.width - 24
+                height: contentArea.height * 0.6
+                model: ["Read CMakeCache.txt", "Read CMakeLists.txt", "Write CMakeCache.txt"]
+                delegate: Rectangle {
+                    height: contentArea.height * 0.05
+                    width: parent.width
+                    color: "steelblue"
+                    radius: 4
+                    StyleText {
+                        font.pointSize: tinyFontSize
+                        x: 2
+                        y: 2
+                        text: modelData
+                    }
+                }
+            }
+        }
+
+        Rectangle {
+            y: contentArea.height * 0.32
+            width: parent.width
+            height: contentArea.height * 0.15
+            color: "white"
+            border {
+                width: 4
+                color: "orange"
+            }
+            radius: 4
+            StyleText {
+                x: 4
+                y: 4
+                text: "Generate Step"
+                font.pointSize: tinyFontSize
+            }
+
+            Rectangle {
+                x: 16
+                y: contentArea.height * 0.06
+                height: contentArea.height * 0.05
+                width: parent.width - 24
+                color: "steelblue"
+                radius: 4
+                StyleText {
+                    font.pointSize: tinyFontSize
+                    x: 2
+                    y: 2
+                    text: "Write Makefiles"
+                }
+            }
         }
     }
+
     Keys.onReleased: {
         if (event.key === Qt.Key_1) {
             autotools.visible = !autotools.visible

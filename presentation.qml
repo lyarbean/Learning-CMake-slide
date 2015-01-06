@@ -77,7 +77,7 @@ ApplicationWindow {
             } else if (event.key === Qt.Key_Menu) {
                 navigator.visible = !navigator.visible
                 event.accepted = true
-            } else if (event.key === Qt.Key_Meta) {
+            } else if ((event.modifiers & Qt.AltModifier) && (event.key === Qt.Key_Meta)) {
                 noteEdit.visible = !noteEdit.visible
                 event.accepted = true
             }
@@ -110,7 +110,7 @@ ApplicationWindow {
                     color: "#4fff0000"
                 }
                 Keys.onReleased: {
-                    if (event.key === Qt.Key_Meta) {
+                    if ((event.modifiers & Qt.AltModifier) && (event.key === Qt.Key_Meta)) {
                         noteEdit.visible = false
                         theView.currentItem.focus = true
                         event.accepted = true
@@ -169,6 +169,12 @@ ApplicationWindow {
         height: 50
         width: parent.width * 0.5
         visible: false
+        onVisibleChanged: {
+            if (visible) {
+                theList.currentIndex = currentIndex
+            }
+        }
+
         y: parent.height - 75
         color: "#00ffffff"
         ListView {

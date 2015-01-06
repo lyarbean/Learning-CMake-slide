@@ -15,6 +15,10 @@ Slide {
             Repeater {
                 model: ListModel {
                     ListElement {
+                        name: "Locations"
+                        txt: "cmakepaths.txt"
+                    }
+                    ListElement {
                         name: "Flags"
                         txt: "flagsanddefinitions.txt"
                     }

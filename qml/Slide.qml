@@ -37,6 +37,10 @@ Rectangle {
 
     ContentArea {
         id: contentArea
+        anchors {
+            top: header.bottom
+            bottom: footer.top
+        }
     }
 
     Footer {

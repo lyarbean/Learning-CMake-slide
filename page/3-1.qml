@@ -17,7 +17,7 @@ Slide {
             Text {
                 x : 0.05 * width
                 y : 0.05 * height
-                font.pointSize: normalFontSize
+                font.pointSize: smallFontSize
                 text:"CMake in github"
                 MouseArea {
                     anchors.fill: parent
@@ -34,7 +34,7 @@ Slide {
             Text {
                 x : 0.05 * width
                 y : 0.05 * height
-                font.pointSize: normalFontSize
+                font.pointSize: smallFontSize
                 text: "KDE projects tree"
                 MouseArea {
                     anchors.fill: parent
@@ -51,7 +51,7 @@ Slide {
             Text {
                 x : 0.05 * width
                 y : 0.05 * height
-                font.pointSize: normalFontSize
+                font.pointSize: smallFontSize
                 id: t
                 text: "CMake wikipedia"
                 MouseArea {
