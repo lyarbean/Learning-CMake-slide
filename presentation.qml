@@ -1,18 +1,39 @@
 import QtQuick 2.3
 import QtQuick.Window 2.2
 import QtQuick.Controls 1.2
+import io.thp.pyotherside 1.4
 
 import "."
+
 ApplicationWindow {
     id: theWindow
     title: qsTr("CMake, the easy way")
     width: 840
     height: 525
     visible: true
+    // TODO Separate me
+    property variant notes: {
+        'project' : 'Set a name, version, and enable languages for the entire project.',
+        'find_package': 'Find a package via CMake module',
+        'set': 'set(<variable> <value> [[CACHE <type> <docstring> [FORCE]] | PARENT_SCOPE])\nset(<variable> <value1> ... <valueN>)'
+    }
+
+    Python {
+        id: py // renderCode.py
+        Component.onCompleted: {
+            // Add the directory of this .qml file to the search path
+            addImportPath(Qt.resolvedUrl('assets'));
+            // Import the main module and load the data
+            importModule_sync('renderCode')
+        }
+    }
+
+    // TODO Rename id
     Pages {
         id: theModel
     }
 
+    // For navigation
     property int currentIndex: 0
     property int previousIndex: 0
 
@@ -93,7 +114,9 @@ ApplicationWindow {
         visible: false
         focus: true
         radius: 5
-        color: Qt.lighter("orange", 1.8)
+        opacity: 0.6
+        color: "orange"
+        property alias text: noteText.text
         ScrollView {
             anchors.fill: parent
             frameVisible: true
@@ -119,11 +142,13 @@ ApplicationWindow {
             }
         }
         Rectangle {
-            color: Qt.lighter("orange")
-            width: 32
-            height: 32
-            anchors.left: parent.right
-            anchors.bottom: parent.bottom
+            width: parent.width + 32
+            height: parent.height + 32
+            x: -16
+            y: -16
+            z: parent.z - 1
+            // anchors.left: parent.right
+            // anchors.bottom: parent.bottom
             MouseArea {
                 anchors.fill: parent
                 drag.target: noteEdit

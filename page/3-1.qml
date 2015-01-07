@@ -3,7 +3,7 @@ import "../qml"
 
 Slide {
     headline: "CMake, the right way"
-    subHeadline: "Fame"
+    subHeadline: "Fame and Fans"
 
     Row {
         spacing: 8

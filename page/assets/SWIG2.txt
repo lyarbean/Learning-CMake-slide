@@ -1,0 +1,18 @@
+# util/scriptutil/
+find_package(SWIG REQUIRED)
+include(${SWIG_USE_FILE})
+find_package(PerlLibs)
+include_directories(${PERL_INCLUDE_PATH})
+set_source_files_properties(ScriptUtil.i PROPERTIES
+    CPLUSPLUS ON
+    SWIG_FLAGS "-D__SCRIPT_UTIL_FOR_PERL__ ")
+SWIG_ADD_MODULE(ScriptUtil.unused perl ScriptUtil.i ${CMAKE_SOURCE_DIR}/util/ScriptUtil.cc)
+#SWIG_LINK_LIBRARIES(ScriptUtil.m ${PER_LIBRARIES})
+
+# util/scriptutil/PythonAPI/
+find_package(SWIG REQUIRED)
+include(${SWIG_USE_FILE})
+find_package(PythonLibs)
+include_directories(${PYTHON_INCLUDE_PATH})
+set_source_files_properties(ScriptUtil.i PROPERTIES CPLUSPLUS ON)
+SWIG_ADD_MODULE(ScriptUtil.unused python ScriptUtil.i ${CMAKE_SOURCE_DIR}/util/ScriptUtil.cc)

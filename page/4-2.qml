@@ -40,70 +40,17 @@ Slide {
                         MouseArea {
                             anchors.fill: parent
                             onClicked: {
-                                changeFile("assets/" + txt)
+                                codeView.resolvedUrl = Qt.resolvedUrl("assets/" + txt)
                             }
                         }
                     }
                 }
             }
         }
-        ScrollView {
+        CodeView {
+            id: codeView
             width: contentArea.width
             height: contentArea.height * 0.9
-            id: codeReader
-            highlightOnFocus: true
-            frameVisible: true
-            property string text
-            TextEdit {
-                activeFocusOnPress: false
-                selectByMouse: true
-                readOnly: true
-                selectedTextColor: "indigo"
-                selectionColor: "#eee"
-                textFormat: Text.RichText
-                text: codeReader.text
-                font.pointSize: tinyFontSize
-            }
-        }
-    }
-    // TODO A listview and use +/- to navigate
-    //
-    //
-    // Boost
-    // GTK2
-    // SWIG
-    // Lua
-    // wxWidgets
-    // Perl
-    // Python
-    // Protobuf
-    // Qt5
-    //
-    // PKGCONFIG
-    // Cairo
-    // MySQL
-    // Xerces-c
-    // Compiler
-    // Fortran
-
-    function changeFile(file) {
-        var xhr = new XMLHttpRequest();
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === XMLHttpRequest.DONE) {
-                codeReader.text = py.call_sync("renderCode.format", [xhr.responseText, "cmake"])
-            }
-        }
-        xhr.open("GET", Qt.resolvedUrl(file))
-        xhr.send();
-    }
-
-    Python {
-        id: py // renderCode.py
-        Component.onCompleted: {
-            // Add the directory of this .qml file to the search path
-            addImportPath(Qt.resolvedUrl('assets'));
-            // Import the main module and load the data
-            importModule_sync('renderCode')
         }
     }
 }

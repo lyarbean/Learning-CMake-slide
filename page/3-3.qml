@@ -6,13 +6,13 @@ Slide {
     subHeadline: "Features"
 
     property var  items: [
-            "Just works wherever a modern c++ compiler lives",
-            "Just works with millions LOC, e.g. KDE",
-            "Just works with gmake, ninja, Xcode and VisualStudio",
-            "Just works with many languages, e.g. C, C++, Object C/C++, Fortran, Ada, Java",
-            "Just gives better denpendency resolution",
-            "Just provides easy finders",
-            "Just is a macro language with simple syntax and function support, and you are THE programmer!"
+            "Only requires a modern C++ compiler",
+            "Can manage millions lines of code, e.g. KDE",
+            "Can output for gmake, ninja, Xcode and VisualStudio",
+            "Work with many languages, e.g. C, C++, Object C/C++, Fortran, Ada, Java",
+            "Gives better denpendency resolution",
+            "Makes configure step more easier",
+            "Being a language, makes you a programmer!"
         ]
 
     MouseArea {

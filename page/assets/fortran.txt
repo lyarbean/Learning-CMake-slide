@@ -1,0 +1,4 @@
+# third_party/opt/
+enable_language (Fortran)
+set(CMAKE_Fortran_COMPILER "f77")
+

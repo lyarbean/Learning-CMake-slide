@@ -28,7 +28,7 @@ ListModel {
         ref: "page/3.qml"
     }
     ListElement {
-        name: "Fame"
+        name: "Fame and Fans"
         ref: "page/3-1.qml"
     }
     ListElement {
@@ -66,7 +66,7 @@ ListModel {
 //    }
     // --
     ListElement {
-        name: "Beyond Make"
+        name: "Not Just Make"
         ref: "page/5.qml"
     }
     ListElement {
@@ -74,11 +74,11 @@ ListModel {
         ref: "page/5-1.qml"
     }
     ListElement {
-        name: "Dependency Graph"
+        name: "Cpack"
         ref: "page/5-2.qml"
     }
     ListElement {
-        name: "Doxygen"
+        name: "Dependency Graph"
         ref: "page/5-3.qml"
     }
     ListElement {
@@ -90,8 +90,16 @@ ListModel {
         ref: "page/6-1.qml"
     }
     ListElement {
-        name: "What to do"  // Findxxx.cmake
+        name: ""
         ref: "page/6-2.qml"
+    }
+    ListElement {
+        name: ""
+        ref: "page/6-3.qml"
+    }
+    ListElement {
+        name: ""
+        ref: "page/6-4.qml"
     }
 
     ListElement {

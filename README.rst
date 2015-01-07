@@ -5,8 +5,10 @@ Requirements
 
 * Qt >= 5.1.0
 * Python >= 3.3.0
+% Pygments_
 * Pyotherside-1.4_
 
+.. _Pygments: http://pygments.org/
 .. _Pyotherside-1.4: https://github.com/thp/pyotherside
 
 Play
@@ -28,8 +30,4 @@ Drag
 ====
 * You may drag some images
 * you can drag note editor
-
-
-
-
 

@@ -1,0 +1,8 @@
+# recipe/toolbox
+add_custom_command(
+    PRE_BUILD
+    OUTPUT bug_generated.h
+    COMMAND genbug.sh tbxbuglist.h >> bug_generated.h
+    DEPENDS tbxbuglist.h
+    )
+

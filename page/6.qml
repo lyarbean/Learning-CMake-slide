@@ -1,9 +1,12 @@
 import QtQuick 2.2
 import QtWebKit 3.0
 import "../qml"
+
 Slide {
     headline: "Port to CMake"
-    // Figure of current...
-    //
-
+    HtmlView {
+        id: codeView
+        anchors.fill: contentArea
+        // resolvedUrl: Qt.resolvedUrl("assets/cmake_system_output.html")
+    }
 }

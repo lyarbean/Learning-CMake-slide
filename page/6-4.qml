@@ -1,12 +1,10 @@
 import QtQuick 2.2
-import QtWebKit 3.0
 import "../qml"
 Slide {
     headline: "Port to CMake"
-    subHeadline: "Root Project"
-
+    subHeadline: "Work with SWIG + (Perl | Python)"
     CodeView {
         anchors.fill: contentArea
-        // resolvedUrl: Qt.resolvedUrl("assets/port/system_port.txt")
+        resolvedUrl: Qt.resolvedUrl("assets/SWIG2.txt")
     }
 }
