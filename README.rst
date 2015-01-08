@@ -5,7 +5,7 @@ Requirements
 
 * Qt >= 5.1.0
 * Python >= 3.3.0
-% Pygments_
+* Pygments_
 * Pyotherside-1.4_
 
 .. _Pygments: http://pygments.org/
