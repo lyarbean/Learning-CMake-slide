@@ -7,7 +7,7 @@ Rectangle {
     property string functionString : ""
     property string slideSubject : ""
     property string dateAndPlace : ""
-    property real fontScale: Math.max(1.0, Math.min(width / 840.0, height/ 525))
+    property real fontScale: Math.min(width / 840.0, height/ 525)
 
     onFontScaleChanged: {
         scriptFontSize = fontScale * 7.0

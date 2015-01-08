@@ -38,8 +38,7 @@ ApplicationWindow {
     property int previousIndex: 0
 
     Component.onCompleted: {
-        theView.push(Qt.resolvedUrl(theModel.get(0).ref))
-        theView.currentItem.focus = true
+        theView.push(Qt.resolvedUrl(theModel.get(0).ref)).focus = true
         theWindow.showFullScreen()
     }
 
@@ -138,12 +137,12 @@ ApplicationWindow {
             TextEdit {
                 id: noteText
                 text: "Note"
-                font.pointSize: 24
+                font.pointSize: theView.width / 60
                 color: "black"
                 selectByMouse: true
                 cursorVisible: true
                 cursorDelegate: Rectangle {
-                    width: 5
+                    width: font.pointSize / 3
                     color: "red"
                 }
                 Keys.onReleased: {
@@ -160,21 +159,29 @@ ApplicationWindow {
     // Navigator with preview support
     Rectangle {
         id: previewBox
-        height: parent.height * 0.3 + 10
-        width: parent.width * 0.3 + 10
+        height: parent.height * 0.3
+        width: parent.width * 0.3
         y: parent.height * 0.68 - 80
         x: parent.width * 0.1
         visible: navigator.visible
+        property alias box: box
         color: "#ffffff"
         border {
-            width: 3
+            width: height * 0.05
             color: "steelblue"
         }
-        radius: 3
+        radius: height * 0.05
+        Rectangle {
+            id: box
+            width: parent.width - parent.height * 0.1
+            height: parent.height* 0.9
+            x: parent.height* 0.05
+            y: parent.height* 0.05
+        }
     }
     Loader {
         id: preview
-        parent: previewBox
+        parent: previewBox.box
         visible: previewBox.visible
         anchors.fill: parent
         asynchronous: false
