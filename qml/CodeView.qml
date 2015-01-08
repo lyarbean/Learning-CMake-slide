@@ -50,8 +50,8 @@ ScrollView {
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {
             if (xhr.readyState === XMLHttpRequest.DONE) {
-                // codeText.text = py.call_sync("renderCode.format", [xhr.responseText, lexer])
-                py.call("renderCode.format", [xhr.responseText, lexer], function(result){codeText.text = result})
+                codeText.text = py.call_sync("renderCode.format", [xhr.responseText, lexer])
+                //py.call("renderCode.format", [xhr.responseText, lexer], function(result){codeText.text = result})
             }
         }
         xhr.open("GET", Qt.resolvedUrl(resolvedUrl))

@@ -7,14 +7,14 @@ Slide {
 
     Rectangle {
         id: box
-        x: contentArea.x + contentArea.width -  im.width - 20
-        y: contentArea.y + contentArea.height - im.height - 20
+        x: contentArea.x + contentArea.width -  im.width
+        y: contentArea.y + contentArea.height - im.height
         focus: true
         color: "lightgray"
         Image {
             id: im
-            x: 5
-            y: 5
+            height: contentArea.height / 2
+            fillMode: Image.PreserveAspectFit
             source: Qt.resolvedUrl("images/cmake-software-process.jpg")
         }
         MouseArea {

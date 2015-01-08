@@ -5,6 +5,7 @@ Slide {
     headline: "CMake, the right way"
     //  TODO add the right way figure...
     Text {
+        font.pointSize: tinyFontSize
         text: "http://www.google.com/trends/explore#q=cmake%2C%20scons%2C%20autotools&cmpt=q"
         anchors.centerIn: footer
     }

@@ -142,7 +142,7 @@ ApplicationWindow {
                 selectByMouse: true
                 cursorVisible: true
                 cursorDelegate: Rectangle {
-                    width: font.pointSize / 3
+                    width: noteText.font.pointSize / 3
                     color: "red"
                 }
                 Keys.onReleased: {
@@ -197,7 +197,7 @@ ApplicationWindow {
         id: navigator
         focus: true
         height: 50
-        width: parent.width * 0.5
+        width: parent.width * 0.9
         visible: false
         onVisibleChanged: {
             if (visible) {
