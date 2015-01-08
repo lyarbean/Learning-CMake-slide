@@ -35,7 +35,7 @@ Slide {
                     StyleText {
                         x: 8
                         y: 8
-                        text: name
+                        text:  codeView.resolvedUrl === Qt.resolvedUrl("assets/" + txt) ? name : "    "
                         color: Style.rainBowForeGround[index % 7]
                         MouseArea {
                             anchors.fill: parent

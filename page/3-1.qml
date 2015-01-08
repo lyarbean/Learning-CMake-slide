@@ -9,54 +9,29 @@ Slide {
         spacing: 8
         x: contentArea.x
         y: contentArea.y
-        Rectangle {
-            width:  childrenRect.width * 1.1
-            height:  childrenRect.height * 1.1
-            color: "orange"
-            Text {
-                x : 0.05 * width
-                y : 0.05 * height
-                font.pointSize: smallFontSize
-                text:"CMake in github"
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        im.source = Qt.resolvedUrl("images/cmake_in_github.png")
-                    }
-                }
-            }
-        }
-        Rectangle {
-            width:  childrenRect.width * 1.1
-            height:  childrenRect.height * 1.1
-            color: "steelblue"
-            Text {
-                x : 0.05 * width
-                y : 0.05 * height
-                font.pointSize: smallFontSize
-                text: "KDE projects tree"
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        im.source = Qt.resolvedUrl("images/kde_projects.png")
-                    }
-                }
-            }
-        }
-        Rectangle {
-            width:  childrenRect.width * 1.1
-            height:  childrenRect.height * 1.1
-            color: "limegreen"
-            Text {
-                x : 0.05 * width
-                y : 0.05 * height
-                font.pointSize: smallFontSize
-                id: t
-                text: "CMake wikipedia"
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        im.source = Qt.resolvedUrl("images/cmake_in_wiki.png")
+        Repeater {
+            model: [
+            {text: "CMake in github", url: Qt.resolvedUrl("images/cmake_in_github.png"), color: "orange"},
+            {text: "KDE projects tree", url: Qt.resolvedUrl("images/kde_projects.png"), color: "steelblue"},
+            {text: "CMake wikipedia", url: Qt.resolvedUrl("images/cmake_in_wiki.png"), color: "limegreen"}
+            ]
+
+            Rectangle {
+                width:  childrenRect.width * 1.1
+                height:  childrenRect.height * 1.1
+                radius: 0.1 * height
+                color: modelData.color
+                Text {
+                    x : 0.05 * width
+                    y : 0.05 * height
+                    font.pointSize: smallFontSize
+                    // Have to use "==" rather than "==="
+                    text: im.source == modelData.url ? modelData.text : "    "
+                    MouseArea {
+                        anchors.fill: parent
+                        onClicked: {
+                            im.source = modelData.url
+                        }
                     }
                 }
             }
@@ -64,7 +39,6 @@ Slide {
     }
     Image {
         id: im
-        focus: true
         x: (parent.width - width) / 2
         y: (parent.height - height) / 2
         fillMode: Image.PreserveAspectFit
@@ -85,10 +59,4 @@ Slide {
             im.source = ""
         }
     }
-
-
-    // Users list
-    // Statistics from github
-    // KDE project tree
-    //
 }

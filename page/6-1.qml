@@ -7,6 +7,6 @@ Slide {
 
     CodeView {
         anchors.fill: contentArea
-        // resolvedUrl: Qt.resolvedUrl("assets/port/system_port.txt")
+        resolvedUrl: Qt.resolvedUrl("assets/port/system_port.txt")
     }
 }

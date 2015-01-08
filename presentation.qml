@@ -113,10 +113,24 @@ ApplicationWindow {
         width: parent.width * 0.72
         visible: false
         focus: true
-        radius: 5
-        opacity: 0.6
-        color: "orange"
+        color: "white"
         property alias text: noteText.text
+        Rectangle {
+            color: "orange"
+            opacity: 0.3
+            x: - parent.height * 0.1
+            y: - parent.height * 0.1
+            width: parent.width + parent.height * 0.2
+            height: parent.height * 1.2
+            radius: parent.height * 0.1
+            MouseArea {
+                anchors.fill: parent
+                drag.target: noteEdit
+                onEntered: {
+                    theView.currentItem.focus = true
+                }
+            }
+        }
         ScrollView {
             anchors.fill: parent
             frameVisible: true
@@ -125,12 +139,12 @@ ApplicationWindow {
                 id: noteText
                 text: "Note"
                 font.pointSize: 24
-                color: "steelblue"
+                color: "black"
                 selectByMouse: true
                 cursorVisible: true
                 cursorDelegate: Rectangle {
                     width: 5
-                    color: "#4fff0000"
+                    color: "red"
                 }
                 Keys.onReleased: {
                     if ((event.modifiers & Qt.AltModifier) && (event.key === Qt.Key_Meta)) {
@@ -138,22 +152,6 @@ ApplicationWindow {
                         theView.currentItem.focus = true
                         event.accepted = true
                     }
-                }
-            }
-        }
-        Rectangle {
-            width: parent.width + 32
-            height: parent.height + 32
-            x: -16
-            y: -16
-            z: parent.z - 1
-            // anchors.left: parent.right
-            // anchors.bottom: parent.bottom
-            MouseArea {
-                anchors.fill: parent
-                drag.target: noteEdit
-                onEntered: {
-                    theView.currentItem.focus = true
                 }
             }
         }

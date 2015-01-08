@@ -4,7 +4,7 @@ import "../qml"
 Slide {
     headline: "Agenda"
     focus: true
-    property var pages: [2, 5, 9, 15, 19]
+    property var pages: [2, 5, 9, 13, 17]
     MouseArea {
         anchors.fill: header
         onClicked:
@@ -30,8 +30,8 @@ Slide {
             radius: 4
             color: Style.lighterRainBow[index % 7]
             StyleText {
-                x: 4
-                y: 4
+                anchors.verticalCenter: parent.verticalCenter
+                x: contentArea.width * 0.05
                 id : t
                 text : name; // theModel.get(modelData).name
                 color: Style.rainBowForeGround[index % 7]

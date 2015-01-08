@@ -56,6 +56,7 @@ Slide {
                     color: "steelblue"
                     radius: 4
                     StyleText {
+                        color: "white"
                         font.pointSize: tinyFontSize
                         x: 2
                         y: 2
@@ -90,6 +91,7 @@ Slide {
                 color: "steelblue"
                 radius: 4
                 StyleText {
+                    color: "white"
                     font.pointSize: tinyFontSize
                     x: 2
                     y: 2

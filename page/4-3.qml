@@ -16,25 +16,28 @@ Slide {
         id: items
         x: contentArea.x
         y: contentArea.y
-        width: contentArea.width * 0.25
-        height: contentArea.height
+        width: contentArea.width
+        height: contentArea.height * 0.1
+        orientation: ListView.Horizontal
+        spacing: contentArea.width * 0.01
         model: ["Boost", "GTK2", "Lua", "wxWidgets", "Perl", "Python", "Protobuf", "Cairo", "Xerces-C"]
         delegate:
         Rectangle {
             radius: 8
-            height: contentArea.height * 0.1
-            width: parent.width
+            height: childrenRect.height + 16
+            width: childrenRect.width + 16
             color: Style.lighterRainBow[index % 7]
             StyleText {
-                anchors.centerIn: parent
+                x: 8
+                y: 8
                 font.pointSize: smallFontSize
-                text: modelData
+                text: codeView.resolvedUrl === Qt.resolvedUrl("assets/" + modelData + ".txt") ? modelData : "    "
                 color: Style.rainBowForeGround[index % 7]
-            }
-            MouseArea {
-                anchors.fill: parent
-                onClicked: {
-                    codeView.resolvedUrl = Qt.resolvedUrl("assets/" + modelData + ".txt")
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        codeView.resolvedUrl = Qt.resolvedUrl("assets/" + modelData + ".txt")
+                    }
                 }
             }
         }
@@ -42,12 +45,11 @@ Slide {
 
     CodeView {
         id: codeView
+        x: contentArea.x
         anchors {
-            left: items.right
-            leftMargin: 16
-            top: items.top
+            top: items.bottom
         }
-        width: contentArea.width * 0.7
-        height: contentArea.height
+        width: contentArea.width
+        height: contentArea.height * 0.9
     }
 }

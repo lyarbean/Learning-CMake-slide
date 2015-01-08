@@ -5,8 +5,29 @@ ScrollView {
     property string resolvedUrl: ""
     property string lexer: "cmake"
     highlightOnFocus: true
+    focus: true
+    Column {
+        id: resizer
+        Text {
+            font.pointSize: hugeFontSize
+            text: "+"
+            MouseArea {
+                anchors.fill: parent
+                onClicked: codeText.font.pointSize *= 1.25
+            }
+        }
+        Text {
+            font.pointSize: hugeFontSize
+            text: "-"
+            MouseArea {
+                anchors.fill: parent
+                onClicked: codeText.font.pointSize *= 0.8
+            }
+        }
+    }
     TextEdit {
         id: codeText
+        x: resizer.width
         activeFocusOnPress: false
         selectByMouse: true
         readOnly: true
@@ -25,7 +46,6 @@ ScrollView {
             }
         }
     }
-
     onResolvedUrlChanged: {
         var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function() {

@@ -87,21 +87,16 @@ Slide {
         Rectangle {
             x: makeView.currentItem.x + makeView.currentItem.width
             height: makeView.currentItem.height
-            color: "lightsteelblue";
+            color: Style.lighterRainBow[makeView.currentIndex % 7]
             radius: 5
-            border {
-                width: 4
-                color:"steelblue"
-            }
             StyleText {
-                x: 4
                 id: t
                 anchors.centerIn: parent
                 wrapMode: Text.WrapAnywhere
                 text: makeView.model.get(makeView.currentIndex).desc
                 Component.onCompleted: parent.width = t.width + 20
                 onTextChanged: parent.width = t.width + 20
-
+                
             }
             y: makeView.currentItem.y
             Behavior on y {

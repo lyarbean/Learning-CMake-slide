@@ -15,7 +15,7 @@ ListModel {
         ref: "page/2.qml"
     }
     ListElement {
-        name: "Make Tools and Make Generators"
+        name: "Build Tools and Generators"
         ref: "page/2-1.qml"
     }
     ListElement {
@@ -49,11 +49,11 @@ ListModel {
         ref: "page/4-1.qml"
     }
     ListElement {
-        name: "Flags and Definitions"
+        name: "Variables"
         ref: "page/4-2.qml"
     }
     ListElement {
-        name: "Finder"
+        name: "Finders"
         ref: "page/4-3.qml"
     }
 //    ListElement {
@@ -103,8 +103,8 @@ ListModel {
     }
 
     ListElement {
-        name:  "Reference"
-        ref: "page/ref_chapter.qml"
+        name:  "Q&A"
+        ref: "page/qa.qml"
     }
     ListElement {
         name: "Thanks!"

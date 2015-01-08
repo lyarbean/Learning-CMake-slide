@@ -3,21 +3,17 @@ import "../qml"
 
 Slide {
     headline: "References"
-    Rectangle {
+    Column {
         anchors.fill: contentArea
-        Column {
-            spacing: normalFontSize
-            Text {
-                text: "http://www.elpauer.org/stuff/learning_cmake.pdf"
-            }
-            Text{
-
-                text: "http://trilinos.org/oldsite/events/kitware_cmake_workshop_2009/presentations/SandiaTrilinosMay2009.pdf"
-
-            }
-            Text {
-                text: "https://sitweb.oca.eu/IMG/pdf/slides.pdf"
-            }
+        spacing: normalFontSize
+        StyleText {
+            text: "http://www.elpauer.org/stuff/learning_cmake.pdf"
+        }
+        StyleText{
+            text: "http://trilinos.org/oldsite/events/kitware_cmake_workshop_2009/presentations/SandiaTrilinosMay2009.pdf"
+        }
+        StyleText {
+            text: "https://sitweb.oca.eu/IMG/pdf/slides.pdf"
         }
     }
 }
