@@ -2,7 +2,6 @@ import QtQuick 2.3
 import QtQuick.Window 2.2
 import QtQuick.Controls 1.2
 import io.thp.pyotherside 1.4
-
 import "."
 
 ApplicationWindow {
@@ -36,7 +35,7 @@ ApplicationWindow {
     // For navigation
     property int currentIndex: 0
     property int previousIndex: 0
-
+    property int printPageIndex: 0
     Component.onCompleted: {
         theView.push(Qt.resolvedUrl(theModel.get(0).ref)).focus = true
         theWindow.showFullScreen()
@@ -99,6 +98,13 @@ ApplicationWindow {
                 event.accepted = true
             } else if ((event.modifiers & Qt.AltModifier) && (event.key === Qt.Key_Meta)) {
                 noteEdit.visible = !noteEdit.visible
+                event.accepted = true
+            } else if ((event.modifiers & Qt.ControlModifier) && (event.key === Qt.Key_P)) {
+                theView.currentItem.grabToImage(function(result) {
+                    var s = "000" + printPageIndex
+                    result.saveToFile("/tmp/slide"+ s.substr(s.length - 4) + ".png")
+                    printPageIndex++
+                });
                 event.accepted = true
             }
         }
