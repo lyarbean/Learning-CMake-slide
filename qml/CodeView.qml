@@ -1,6 +1,6 @@
 import QtQuick 2.2
 import QtQuick.Controls 1.2
-
+import "."
 ScrollView {
     property string resolvedUrl: ""
     property string lexer: "cmake"
@@ -40,8 +40,8 @@ ScrollView {
                 for (var n in notes) { // external notes
                     if (n === selectedText) {
                         noteEdit.visible = true
-                        noteEdit.text = selectedText + "\n" + notes[n] 
-                    } 
+                        noteEdit.text = selectedText + "\n" + Notes.notes[n] 
+                    }
                 }
             }
         }

@@ -1,0 +1,32 @@
+cmake_minimum_required (VERSION 2.8)
+find_package(Java REQUIRED)
+include(UseJava)
+
+enable_testing()
+project(HelloWorld)
+
+set(CMAKE_JAVA_COMPILE_FLAGS "-source" "1.6" "-target" "1.6")
+
+add_jar(HelloWorld HelloWorld.java)
+
+#add_jar(example ENTRY_POINT com/examples/MyProject/Main)
+
+get_target_property(_jarFile HelloWorld JAR_FILE)
+get_target_property(_classDir HelloWorld CLASSDIR)
+
+message(STATUS "Jar file ${_jarFile}")
+message(STATUS "Class compiled to ${_classDir}")
+
+add_test(NAME TestHelloWorld COMMAND ${Java_JAVA_EXECUTABLE} -cp ${_jarFile} HelloWorld)
+
+# set(CMAKE_JNI_TARGET TRUE)
+# install_jar(HelloWorld  ${LIB_INSTALL_DIR}/)
+# install_jni_symlink(HelloWorld ${JAVA_LIB_INSTALL_DIR})
+#
+# find_jar(...)
+# create_javadoc(...)
+
+# /usr/share/cmake/Modules/UseJava.cmake
+
+    
+

@@ -15,6 +15,10 @@ Slide {
             Repeater {
                 model: ListModel {
                     ListElement {
+                        name: "Targets"
+                        txt: "targets.txt"
+                    }
+                    ListElement {
                         name: "Locations"
                         txt: "cmakepaths.txt"
                     }
@@ -53,4 +57,11 @@ Slide {
             height: contentArea.height * 0.9
         }
     }
+    Text {
+        anchors.fill: footer
+        text: "/usr/share/cmake/Help/command"
+        font.pointSize: smallFontSize
+    }
+
+
 }

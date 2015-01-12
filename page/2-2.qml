@@ -37,7 +37,6 @@ Slide {
             StyleText {
                 x: 4
                 y: 4
-                id: step
                 text: "Configure Step"
                 font.pointSize: tinyFontSize
             }
@@ -46,20 +45,19 @@ Slide {
                 enabled: false
                 x: 16
                 y: contentArea.height * 0.06
-                spacing: contentArea.height * 0.02
+                spacing: contentArea.height * 0.01
                 width: parent.width - 24
                 height: contentArea.height * 0.6
                 model: ["Read CMakeCache.txt", "Read CMakeLists.txt", "Write CMakeCache.txt"]
                 delegate: Rectangle {
-                    height: contentArea.height * 0.05
+                    height: contentArea.height * 0.06
                     width: parent.width
                     color: "steelblue"
                     radius: 4
                     StyleText {
+                        anchors.centerIn: parent
                         color: "white"
                         font.pointSize: tinyFontSize
-                        x: 2
-                        y: 2
                         text: modelData
                     }
                 }
@@ -86,15 +84,14 @@ Slide {
             Rectangle {
                 x: 16
                 y: contentArea.height * 0.06
-                height: contentArea.height * 0.05
+                height: contentArea.height * 0.06
                 width: parent.width - 24
                 color: "steelblue"
                 radius: 4
                 StyleText {
+                    anchors.centerIn: parent
                     color: "white"
                     font.pointSize: tinyFontSize
-                    x: 2
-                    y: 2
                     text: "Write Makefiles"
                 }
             }

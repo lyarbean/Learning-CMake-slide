@@ -20,7 +20,7 @@ Slide {
         height: contentArea.height * 0.1
         orientation: ListView.Horizontal
         spacing: contentArea.width * 0.01
-        model: ["Boost", "GTK2", "Lua", "wxWidgets", "Perl", "Python", "Protobuf", "Cairo", "Xerces-C"]
+        model: ["Boost", "GTK2", "Lua", "wxWidgets", "Perl", "Python", "Protobuf", "Cairo", "Xerces-C", "Java"]
         delegate:
         Rectangle {
             radius: 8

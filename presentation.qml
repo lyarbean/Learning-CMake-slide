@@ -10,13 +10,6 @@ ApplicationWindow {
     width: 840
     height: 525
     visible: true
-    // TODO Separate me
-    property variant notes: {
-        'project' : 'Set a name, version, and enable languages for the entire project.',
-        'find_package': 'Find a package via CMake module',
-        'set': 'set(<variable> <value> [[CACHE <type> <docstring> [FORCE]] | PARENT_SCOPE])\nset(<variable> <value1> ... <valueN>)'
-    }
-
     Python {
         id: py // renderCode.py
         Component.onCompleted: {
@@ -113,9 +106,9 @@ ApplicationWindow {
     Rectangle {
         id: noteEdit
         y: parent.height * 0.65
-        x: parent.width * 0.25
+        x: parent.width * 0.15
         height: parent.height * 0.3
-        width: parent.width * 0.72
+        width: parent.width * 0.85
         visible: false
         focus: true
         color: "white"
@@ -123,11 +116,7 @@ ApplicationWindow {
         Rectangle {
             color: "orange"
             opacity: 0.3
-            x: - parent.height * 0.1
-            y: - parent.height * 0.1
-            width: parent.width + parent.height * 0.2
-            height: parent.height * 1.2
-            radius: parent.height * 0.1
+            anchors.fill: parent
             MouseArea {
                 anchors.fill: parent
                 drag.target: noteEdit

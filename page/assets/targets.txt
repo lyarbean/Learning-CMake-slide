@@ -1,0 +1,19 @@
+add_executable(<name> [WIN32] [MACOSX_BUNDLE]
+    [EXCLUDE_FROM_ALL]
+    source1 [source2 ...])
+
+add_library(<name> [STATIC | SHARED | MODULE]
+    [EXCLUDE_FROM_ALL]
+    source1 [source2 ...])
+
+add_test(NAME <name> COMMAND <command> [<arg>...]
+    [CONFIGURATIONS <config>...]
+    [WORKING_DIRECTORY <dir>])
+
+add_custom_target(<name> [ALL] [command1 [args1...]]
+    [COMMAND command2 [args2...] ...]
+    [DEPENDS depend depend depend ... ]
+    [WORKING_DIRECTORY dir]
+    [COMMENT comment] [VERBATIM]
+    [SOURCES src1 [src2...]])
+
